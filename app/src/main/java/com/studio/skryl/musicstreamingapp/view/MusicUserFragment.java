@@ -1,4 +1,4 @@
-package com.studio.skryl.musicstreamingapp.ui;
+package com.studio.skryl.musicstreamingapp.view;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

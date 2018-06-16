@@ -3,6 +3,7 @@ package com.studio.skryl.musicstreamingapp.viewmodel;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.ViewModel;
 
 import com.studio.skryl.musicstreamingapp.data.network.MusicRepository;
 import com.studio.skryl.musicstreamingapp.model.Album;

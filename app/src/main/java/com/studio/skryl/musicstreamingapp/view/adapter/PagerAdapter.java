@@ -1,11 +1,13 @@
-package com.studio.skryl.musicstreamingapp.ui;
+package com.studio.skryl.musicstreamingapp.view.adapter;
 
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.studio.skryl.musicstreamingapp.view.MusicCollectionFragment;
+import com.studio.skryl.musicstreamingapp.view.MusicSearchFragment;
+import com.studio.skryl.musicstreamingapp.view.MusicUserFragment;
 
 public class PagerAdapter extends FragmentPagerAdapter {
 
