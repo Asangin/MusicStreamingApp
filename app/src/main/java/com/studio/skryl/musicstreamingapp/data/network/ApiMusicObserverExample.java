@@ -9,10 +9,10 @@ import rx.Subscription;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
-public class ApiMusic {
+public class ApiMusicObserverExample {
     private final ApiMusicInterface apiMusicInterface;
 
-    public ApiMusic(ApiMusicInterface apiMusicInterface) {
+    public ApiMusicObserverExample(ApiMusicInterface apiMusicInterface) {
         this.apiMusicInterface = apiMusicInterface;
     }
 
