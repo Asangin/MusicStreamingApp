@@ -4,8 +4,8 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.util.Log;
 
-import com.studio.skryl.musicstreamingapp.Config;
-import com.studio.skryl.musicstreamingapp.model.Album;
+import com.studio.skryl.musicstreamingapp.util.Config;
+import com.studio.skryl.musicstreamingapp.model.Data;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,26 +37,26 @@ public class MusicRepository {
         return musicRepository;
     }
 
-    public LiveData<Album> getPlaylist (int id, final int limit) {
-        final MutableLiveData<Album> livePlaylist = new MutableLiveData<>();
+    public LiveData<Data> getPlaylist (int id, final int limit) {
+        final MutableLiveData<Data> liveMusicData = new MutableLiveData<>();
 
-        apiMusicInterface.getPlaylist(id, limit).enqueue(new Callback<Album>() {
+        apiMusicInterface.getPlaylist(id, limit).enqueue(new Callback<Data>() {
             @Override
-            public void onResponse(Call<Album> call, Response<Album> response) {
+            public void onResponse(Call<Data> call, Response<Data> response) {
                 if (response.isSuccessful()) {
-                    livePlaylist.setValue(response.body());
+                    liveMusicData.setValue(response.body());
                 } else {
                     Log.e("TAG", "Error.  " +  response.code());
                 }
             }
 
             @Override
-            public void onFailure(Call<Album> call, Throwable t) {
+            public void onFailure(Call<Data> call, Throwable t) {
                 new NetworkError(t).logingError();
-                livePlaylist.setValue(null);
+                liveMusicData.setValue(null);
 
             }
         });
-        return livePlaylist;
+        return liveMusicData;
     }
 }

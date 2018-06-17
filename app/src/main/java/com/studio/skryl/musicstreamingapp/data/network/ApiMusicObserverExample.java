@@ -1,6 +1,6 @@
 package com.studio.skryl.musicstreamingapp.data.network;
 
-import com.studio.skryl.musicstreamingapp.model.Album;
+import com.studio.skryl.musicstreamingapp.model.Data;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.Observable;
@@ -20,13 +20,13 @@ public class ApiMusicObserverExample {
         return apiMusicInterface.getRecentAlbums(id, limit)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .onErrorResumeNext(new Func1<Throwable, Observable<? extends Album>>() {
+                .onErrorResumeNext(new Func1<Throwable, Observable<? extends Data>>() {
                     @Override
-                    public Observable<? extends Album> call(Throwable throwable) {
+                    public Observable<? extends Data> call(Throwable throwable) {
                         return Observable.error(throwable);
                     }
                 })
-                .subscribe(new Subscriber<Album>() {
+                .subscribe(new Subscriber<Data>() {
                     @Override
                     public void onCompleted() {
 
@@ -38,14 +38,14 @@ public class ApiMusicObserverExample {
                     }
 
                     @Override
-                    public void onNext(Album album) {
-                        callback.onSuccess(album);
+                    public void onNext(Data data) {
+                        callback.onSuccess(data);
                     }
                 });
     }
 
     public interface GetTracksListCallback {
-        void onSuccess(Album album);
+        void onSuccess(Data data);
 
         void onError(NetworkError networkError);
     }

@@ -1,6 +1,6 @@
 package com.studio.skryl.musicstreamingapp.data.network;
 
-import com.studio.skryl.musicstreamingapp.model.Album;
+import com.studio.skryl.musicstreamingapp.model.Data;
 import com.studio.skryl.musicstreamingapp.model.Track;
 
 import retrofit2.Call;
@@ -19,9 +19,9 @@ public interface ApiMusicInterface {
     // https://api.deezer.com/playlist/1362526495/tracks?index=0&limit=10
 
     @GET("/playlist/{id}/tracks?index=0")
-    Observable<Album> getRecentAlbums (@Path("id") int id, @Query("limit") int limit);
+    Observable<Data> getRecentAlbums (@Path("id") int id, @Query("limit") int limit);
 
     @GET("/playlist/{id}/tracks?index=0")
-    Call<Album> getPlaylist (@Path("id") int id, @Query("limit") int limit);
+    Call<Data> getPlaylist (@Path("id") int id, @Query("limit") int limit);
 
 }

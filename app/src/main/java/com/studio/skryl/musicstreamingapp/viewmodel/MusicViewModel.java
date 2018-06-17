@@ -3,22 +3,21 @@ package com.studio.skryl.musicstreamingapp.viewmodel;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
 
 import com.studio.skryl.musicstreamingapp.data.network.MusicRepository;
-import com.studio.skryl.musicstreamingapp.model.Album;
+import com.studio.skryl.musicstreamingapp.model.Data;
 
 public class MusicViewModel extends AndroidViewModel{
 
-    private final LiveData<Album> albumLiveData;
+    private final LiveData<Data> playlistLiveData;
 
     public MusicViewModel (Application application) {
         super(application);
-        albumLiveData = MusicRepository.getInstance().getPlaylist(1362526495, 10);
+       playlistLiveData = MusicRepository.getInstance().getPlaylist(1362526495, 10);
     }
 
-    public LiveData<Album> getAlbumLiveData(){
-        return albumLiveData;
+    public LiveData<Data> getPlaylistLiveData(){
+        return playlistLiveData;
     }
 
 

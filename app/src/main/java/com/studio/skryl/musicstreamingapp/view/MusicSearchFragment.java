@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.deezer.sdk.model.Album;
 import com.studio.skryl.musicstreamingapp.R;
 
 public class MusicSearchFragment extends Fragment {

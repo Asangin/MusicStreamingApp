@@ -2,7 +2,6 @@ package com.studio.skryl.musicstreamingapp.view;
 
 
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,7 +15,7 @@ import android.view.ViewGroup;
 
 
 import com.studio.skryl.musicstreamingapp.R;
-import com.studio.skryl.musicstreamingapp.model.Album;
+import com.studio.skryl.musicstreamingapp.model.Data;
 import com.studio.skryl.musicstreamingapp.view.adapter.RecyclerAdapter;
 import com.studio.skryl.musicstreamingapp.viewmodel.MusicViewModel;
 
@@ -35,11 +34,11 @@ public class MusicCollectionFragment extends Fragment {
     }
 
     private void observeViewModule(MusicViewModel musicViewModel) {
-        musicViewModel.getAlbumLiveData().observe(this, new Observer<Album>() {
+        musicViewModel.getPlaylistLiveData().observe(this, new Observer<Data>() {
             @Override
-            public void onChanged(@Nullable Album album) {
-                if (album != null) {
-                    mAdapter = new RecyclerAdapter(album.getAlbums());
+            public void onChanged(@Nullable Data data) {
+                if (data != null) {
+                    mAdapter = new RecyclerAdapter(data.getTracks());
                     mRecyclerView.setAdapter(mAdapter);
                 }
             }
@@ -58,7 +57,7 @@ public class MusicCollectionFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(getActivity());
+        mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
